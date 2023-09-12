@@ -15,10 +15,13 @@ function reliableMultiply(a: number, b: number): number | void {
   try {
     return primitiveMultiply(a, b);
   } catch (e) {
+    // Проверяем инстанс исключения
     if (e instanceof NotificationException) {
       console.log('NotificationException');
+      // Исключение не критичное, вызываем повторно функцию
       return reliableMultiply(a, b);
     } else if (e instanceof ErrorException) {
+      // Исключение критичное, пробрасываем исключение и прерываем работу
       throw e;
     } else {
       throw new Error('Unknown exception');

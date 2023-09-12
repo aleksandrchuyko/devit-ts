@@ -2,7 +2,9 @@ type Pair = [a: string, b: any];
 type Obj = {
   [key: string]: any;
 };
-
+// Перебираем массивы-параметры и преобразуем в ключ-значение.
+// Если второй элемент тоже массив, вызываем функцию рекурсивно
+// для создания вложенных объектов
 function arrayToObject(arr: Pair[]): Obj {
   return arr.reduce<Obj>((obj, pair) => {
     if (Array.isArray(pair[1])) {

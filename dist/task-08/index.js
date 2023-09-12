@@ -1,18 +1,20 @@
 "use strict";
-console.log('object');
-function combos(n, arr = []) {
-    let parts = [...arr];
-    if (n === 0) {
-        console.log(arr);
-    }
-    else {
-        for (let i = 1; i <= n; i++) {
-            if (parts.length === 0 || parts[parts.length - 1] <= i) {
-                parts.push(i);
-                combos(n - i, parts);
+function combos(n) {
+    let results = [];
+    function cycle(n, arr = []) {
+        if (n === 0) {
+            results.push([...arr]);
+        }
+        else {
+            for (let i = 1; i <= n; i++) {
+                if (arr.length === 0 || arr[arr.length - 1] <= i) {
+                    cycle(n - i, [...arr, i]);
+                }
             }
         }
     }
+    cycle(n);
+    return results;
 }
-combos(3);
+console.log(combos(10));
 //# sourceMappingURL=index.js.map

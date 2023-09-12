@@ -1,12 +1,13 @@
 function chunkArray(arr: any[], slices: number): any {
   let chunks: any[] = [];
-
+  // Отрезаем кусочки заданной длины от исходного массива
+  // и сохраняем во внутреннем массиве массивов
   while (arr.length > 0) {
     chunks.push(arr.splice(0, slices));
   }
 
   let nextIndex = 0;
-
+  // Возвращаем объект-итератор по массиву чанков
   return {
     next: function () {
       return nextIndex < chunks.length

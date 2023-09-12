@@ -12,14 +12,14 @@ function deepEqual(a, b) {
         return false;
     }
     for (let i = 0; i < keysA.length; i++) {
-        if (typeof a[keysA[i]] === 'object' && typeof b[keysA[i]] === 'object') {
-            if (deepEqual(a[keysA[i]], b[keysA[i]]))
+        if (typeof a[keysA[i]] === 'object' && typeof b[keysB[i]] === 'object') {
+            if (deepEqual(a[keysA[i]], b[keysB[i]]))
                 continue;
             else {
                 return false;
             }
         }
-        if (a[keysA[i]] !== b[keysA[i]])
+        if (a[keysA[i]] !== b[keysB[i]])
             return false;
     }
     return true;
